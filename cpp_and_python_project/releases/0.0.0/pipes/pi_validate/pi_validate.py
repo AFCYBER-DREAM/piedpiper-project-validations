@@ -19,7 +19,7 @@ class ValidatePipeVars(Schema):
 
     @validates('run_pipe')
     def validate_run_pipe(self, value):
-        defined_value = True
+        defined_value = False
         if value != defined_value:
             raise ValidationError('Validate Pipe must be enabled')
 
