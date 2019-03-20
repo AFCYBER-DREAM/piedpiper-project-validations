@@ -19,15 +19,16 @@ class ValidatePipeVars(Schema):
 
     @validates('run_pipe')
     def validate_run_pipe(self, value):
-        defined_value = False
+        defined_value = True
+        pipe_boolean = ('disabled', 'enabled')[defined_value]
         if value != defined_value:
-            raise ValidationError('Validate Pipe must be enabled')
+            raise ValidationError(f'Validate Pipe must be {pipe_boolean}')
 
     @validates('url')
     def validate_url(self, value):
         defined_value = 'http://172.17.0.1:8080/function'
         if value != defined_value:
-            raise ValidationError(f'Validate pipe URL must be {defined_value} ')
+            raise ValidationError(f'Validate pipe URL must be {defined_value}')
 
 
 class ValidatePipeConfig(Schema):
