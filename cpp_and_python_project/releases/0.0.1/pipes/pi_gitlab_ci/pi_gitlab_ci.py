@@ -4,7 +4,6 @@ from marshmallow import RAISE
 from marshmallow import ValidationError
 from marshmallow import validates
 
-
 class Stages(Schema):
     stages = fields.List(fields.String(), required=True)
 
@@ -47,6 +46,7 @@ class Include(Schema):
 def validate(schema, config):
     validation_schema = globals()[schema]
     validation = validation_schema(unknown=RAISE)
+    # test
     try:
         _ = validation.load(config)
         result = True
