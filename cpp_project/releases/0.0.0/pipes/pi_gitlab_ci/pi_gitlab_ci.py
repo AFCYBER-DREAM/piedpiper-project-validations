@@ -4,13 +4,13 @@ from marshmallow import RAISE
 from marshmallow import ValidationError
 from marshmallow import validates
 
+
 class Stages(Schema):
     stages = fields.List(fields.String(), required=True)
 
     @validates('stages')
     def validate_stages(self, value):
         required_stages = [
-            'validate',
             'lint'
         ]
         errors = []
