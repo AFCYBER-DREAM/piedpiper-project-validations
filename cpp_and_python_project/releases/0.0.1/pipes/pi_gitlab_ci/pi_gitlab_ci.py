@@ -11,6 +11,7 @@ class Stages(Schema):
     def validate_stages(self, value):
         required_stages = [
             'validate',
+            'add',
             'lint'
         ]
         errors = []
@@ -46,7 +47,6 @@ class Include(Schema):
 def validate(schema, config):
     validation_schema = globals()[schema]
     validation = validation_schema(unknown=RAISE)
-    # test 3
     try:
         _ = validation.load(config)
         result = True
