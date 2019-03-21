@@ -46,7 +46,7 @@ class Include(Schema):
 def validate(schema, config):
     validation_schema = globals()[schema]
     validation = validation_schema(unknown=RAISE)
-    # test 2
+    # test 3
     try:
         _ = validation.load(config)
         result = True
