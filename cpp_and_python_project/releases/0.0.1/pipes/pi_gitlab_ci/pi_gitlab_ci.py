@@ -12,7 +12,6 @@ class Stages(Schema):
     def validate_stages(self, value):
         required_stages = [
             'validate',
-            'add',
             'lint'
         ]
         errors = []
