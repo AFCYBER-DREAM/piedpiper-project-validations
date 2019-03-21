@@ -13,6 +13,7 @@ class Stages(Schema):
         required_stages = [
             'validate',
             'add',
+            'test',
             'lint'
         ]
         errors = []
