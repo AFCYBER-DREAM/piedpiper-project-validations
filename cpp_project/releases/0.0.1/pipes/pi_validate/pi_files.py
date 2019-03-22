@@ -8,6 +8,7 @@ from marshmallow import validates
 class FileVars(Schema):
     file = fields.Str(required=True)
     linter = fields.Str(required=True)
+    sast = fields.Str(required=True)
 
     @validates('linter')
     def validate_linter(self, value):
@@ -20,6 +21,19 @@ class FileVars(Schema):
         errors = []
         if value not in allowed_linters:
             errors.append(ValueError(f'File linter must be one of {allowed_linters}. You passed {value}'))
+        if len(errors):
+            raise ValidationError(errors)
+
+    @validates('sast')
+    def validate_sast(self, value):
+        allowed_sast = [
+            'noop',
+            'cppcheck'
+        ]
+
+        errors = []
+        if value not in allowed_sast:
+            errors.append(ValueError(f'File sast must be one of {allowed_sast}. You passed {value}'))
         if len(errors):
             raise ValidationError(errors)
 
