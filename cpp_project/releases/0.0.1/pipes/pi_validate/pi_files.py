@@ -7,20 +7,20 @@ from marshmallow import validates
 
 class FileVars(Schema):
     file = fields.Str(required=True)
-    linter = fields.Str(required=True)
+    styler = fields.Str(required=True)
     sast = fields.Str(required=True)
 
-    @validates('linter')
-    def validate_linter(self, value):
-        allowed_linters = [
+    @validates('styler')
+    def validate_styler(self, value):
+        allowed_stylers = [
             'noop',
             'cpplint',
             'flake8'
         ]
 
         errors = []
-        if value not in allowed_linters:
-            errors.append(ValueError(f'File linter must be one of {allowed_linters}. You passed {value}'))
+        if value not in allowed_stylers:
+            errors.append(ValueError(f'File styler must be one of {allowed_stylers}. You passed {value}'))
         if len(errors):
             raise ValidationError(errors)
 
