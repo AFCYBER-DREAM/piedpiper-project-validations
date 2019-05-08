@@ -15,7 +15,7 @@ class FileVars(Schema):
         allowed_linters = [
             'noop',
             'cpplint',
-            'flake8'
+            'flake8',
         ]
 
         errors = []
@@ -28,7 +28,8 @@ class FileVars(Schema):
     def validate_sast(self, value):
         allowed_sast = [
             'noop',
-            'cppcheck'
+            'cppcheck',
+            'pybandit',
         ]
 
         errors = []
